@@ -1,6 +1,7 @@
 const electron = require('electron')
 // Module to control application life.
 const app = electron.app
+const ipcMain = electron.ipcMain
 // Module to create native browser window.
 const BrowserWindow = electron.BrowserWindow
 
@@ -25,6 +26,14 @@ function createWindow () {
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
 
+    ipcMain.on('test-ipc', function(e, a) {
+        console.log(a)
+        a.sb = Date.now()
+        console.log(a)
+    })
+    setInterval(() => {
+    mainWindow.webContents.send('echo')
+    }, 1000)
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {
     // Dereference the window object, usually you would store windows

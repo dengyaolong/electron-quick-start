@@ -10,7 +10,11 @@
     We are using Node.js <script>document.write(process.versions.node)</script>,
     Chromium <script>document.write(process.versions.chrome)</script>,
     and Electron <script>document.write(process.versions.electron)</script>.
-
+    <label for="file-select">Choose Directory:</label>
+    <input id="file-select"
+      name="file-select"
+      type="file"
+      webkitdirectory />
     <script>
       // You can also require other files to run in this process
       require('./renderer.js')
